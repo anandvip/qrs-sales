@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Pitch Training Slides</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+        .slide {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            display: none;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        .slide.active {
+            display: block;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        h2 {
+            color: #3498db;
+        }
+        ul {
+            margin-left: 20px;
+        }
+        .navigation {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+        }
+        .nav-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="slide1" class="slide active">
+        <h1>Define Objectives for Sales Pitch Training</h1>
+        <h2>1. What is a Sales Pitch?</h2>
+        <ul>
+            <li>A <strong>sales pitch</strong> is a concise and persuasive message designed to convince a potential customer about the value of a product or service.</li>
+            <li>The main goal is to <strong>communicate value</strong> effectively, spark interest, and move the prospect towards a <strong>next step</strong>.</li>
+        </ul>
+    </div>
+
+    <div id="slide2" class="slide">
+        <h1>Define Objectives for Sales Pitch Training</h1>
+        <h2>2. Purpose of a Successful Sales Pitch</h2>
+        <ul>
+            <li><strong>Identify the Customer's Problem</strong>: Articulate the problem that the customer is facing.</li>
+            <li><strong>Present a Solution</strong>: Clearly present the product as a solution that meets the specific need identified.</li>
+            <li><strong>Create Value</strong>: Explain the benefits that are most important to the customer.</li>
+            <li><strong>Encourage Action</strong>: End with a call to action (CTA) to move the conversation forward.</li>
+        </ul>
+    </div>
+
+    <div id="slide3" class="slide">
+        <h1>Define Objectives for Sales Pitch Training</h1>
+        <h2>3. What Makes a Sales Pitch Effective?</h2>
+        <ul>
+            <li><strong>Clear Understanding of the Audience</strong>: Tailor the pitch to the customer's background.</li>
+            <li><strong>Concise and Focused</strong>: Keep it brief but powerful, focusing on key aspects.</li>
+            <li><strong>Empathy and Personalization</strong>: Demonstrate understanding of specific challenges.</li>
+            <li><strong>Use of Evidence</strong>: Include data, clinical outcomes, or testimonials for credibility.</li>
+            <li><strong>Engagement</strong>: Make it interactive, encouraging questions and discussion.</li>
+        </ul>
+    </div>
+
+    <div id="slide4" class="slide">
+        <h1>Define Objectives for Sales Pitch Training</h1>
+        <h2>Summary</h2>
+        <p>The objective of a successful sales pitch is to:</p>
+        <ul>
+            <li><strong>Identify a need</strong></li>
+            <li><strong>Present a solution</strong></li>
+            <li><strong>Create value</strong> for the customer</li>
+            <li><strong>Prompt action</strong></li>
+        </ul>
+        <p>Understanding these objectives will help your sales team structure pitches that resonate with doctors, keeping the message clear, relevant, and compelling.</p>
+    </div>
+
+    <div class="navigation">
+        <button id="prevBtn" class="nav-btn">Previous</button>
+        <button id="nextBtn" class="nav-btn">Next</button>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 4;
+
+        function showSlide(slideNumber) {
+            document.querySelectorAll('.slide').forEach(slide => slide.classList.remove('active'));
+            document.getElementById(`slide${slideNumber}`).classList.add('active');
+            currentSlide = slideNumber;
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides) {
+                showSlide(currentSlide + 1);
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 1) {
+                showSlide(currentSlide - 1);
+            }
+        }
+
+        document.getElementById('nextBtn').addEventListener('click', nextSlide);
+        document.getElementById('prevBtn').addEventListener('click', prevSlide);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+        });
+
+        const hammer = new Hammer(document.body);
+        hammer.on('swipeleft', nextSlide);
+        hammer.on('swiperight', prevSlide);
+    </script>
+</body>
+</html>
